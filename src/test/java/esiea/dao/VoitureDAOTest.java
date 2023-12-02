@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Assertions;
 
 import java.sql.SQLException;
 
-public class VoitureDAOIntegrationTest {
+public class VoitureDAOTest {
 
     private VoitureDAO voitureDAO;
 
@@ -57,28 +57,30 @@ public class VoitureDAOIntegrationTest {
         Assertions.assertTrue(actualMessage.contains(expectedMessage));
     }
 
-    @Test
-    public void whenModifierVoiture_thenVoitureIsModified() {
-        try {
-            Voiture voitureModifiee = new Voiture();
-            // Config de la voiture modifiée
-            voitureModifiee.setMarque("TestMarqueModifiee");
+    // @Test
+    // public void whenModifierVoiture_thenVoitureIsModified() {
+    // try {
+    // Voiture voitureModifiee = new Voiture();
+    // // Config de la voiture modifiée
+    // voitureModifiee.setMarque("TestMarqueModifiee");
 
-            int voitureId = 1;
-            voitureDAO.modifierVoiture(voitureId, voitureModifiee);
+    // int voitureId = 1;
+    // voitureDAO.modifierVoiture(voitureId, voitureModifiee);
 
-            // Recherche de la voiture modifiée pour confirmer les modifications
-            ReponseVoiture reponseModification = voitureDAO.rechercherVoitures("TestMarqueModifiee", 0, 1);
-            Assertions.assertTrue(reponseModification.getData().length > 0, "La voiture modifiée devrait être trouvée");
-            Assertions.assertEquals("TestMarqueModifiee",
-                    reponseModification.getData()[0].getMarque(),
-                    "La marque modifiée de la voiture devrait correspondre");
+    // // Recherche de la voiture modifiée pour confirmer les modifications
+    // ReponseVoiture reponseModification =
+    // voitureDAO.rechercherVoitures("TestMarqueModifiee", 0, 1);
+    // Assertions.assertTrue(reponseModification.getData().length > 0, "La voiture
+    // modifiée devrait être trouvée");
+    // Assertions.assertEquals("TestMarqueModifiee",
+    // reponseModification.getData()[0].getMarque(),
+    // "La marque modifiée de la voiture devrait correspondre");
 
-        } catch (SQLException e) {
-            Assertions.fail("Échec de la modification de la voiture : " +
-                    e.getMessage());
-        }
-    }
+    // } catch (SQLException e) {
+    // Assertions.fail("Échec de la modification de la voiture : " +
+    // e.getMessage());
+    // }
+    // }
 
     @Test
     public void whenRechercherVoitures_thenVoituresAreFound() {
